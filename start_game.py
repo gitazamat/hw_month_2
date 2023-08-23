@@ -12,7 +12,7 @@ def game_play ():
         print(f"Your current balance: ${game_money}")#Ваш текущий баланс
         bet = int(input("Place your bet: "))#Сделайте ставку
         if bet > game_money:
-            print("You don't have enough money for that bet.")#У вас недастаточно денег для данной ставки
+            print("Yougit  don't have enough money for that bet.")#У вас недастаточно денег для данной ставки
             chosen_slot = int(input("Choose a slot (1-30): "))#Выберите слот (1-30)
             if chosen_slot not in number:
                 print("Invalid slot number. Choose between 1 and 30.")#Не верная ставка, Сделайте  ставку от 1 до 30
