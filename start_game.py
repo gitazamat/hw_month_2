@@ -2,7 +2,7 @@ from game_logic import numbers, lucky
 from settings_ini import my_money
 
 def play_game():
-    available_money = my_money  #начальный капитал
+    available_money = my_money  #начальный капитан
     while True:
         if available_money == 0:
             break
