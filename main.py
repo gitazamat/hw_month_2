@@ -1,4 +1,3 @@
-from start_game import game_play
-
-if __name__ == '__main__':
-    game_play()
+from start_game import play_game
+if __name__ == "main":
+    play_game()

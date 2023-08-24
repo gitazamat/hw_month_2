@@ -1,39 +1,37 @@
-import  random
-from game_logic import number,numberswining
-
-
+from game_logic import numbers, lucky
 from settings_ini import my_money
 
-def game_play ():
-    game_money = my_money
+def play_game():
+    available_money = my_money  #начальный капитал
     while True:
-        if game_money == 0:
+        if available_money == 0:
             break
-        print(f"Your current balance: ${game_money}")#Ваш текущий баланс
-        bet = int(input("Place your bet: "))#Сделайте ставку
-        if bet > game_money:
-            print("Yougit  don't have enough money for that bet.")#У вас недастаточно денег для данной ставки
-            chosen_slot = int(input("Choose a slot (1-30): "))#Выберите слот (1-30)
-            if chosen_slot not in number:
-                print("Invalid slot number. Choose between 1 and 30.")#Не верная ставка, Сделайте  ставку от 1 до 30
-                continue
+        print(f"Your available capital: { available_money}$")
+        while True:
+            try:
+                selected_number = int(input(f'enter number 1-30:'))
+                if selected_number > 30 or selected_number < 1:
+                    print(f' pleaese enter correct number')
+                else:
+                    break
 
-            winning_slot = random.choice(number)
-            if chosen_slot == winning_slot:
-                game_money += bet * 2
-                print(f"Congratulations! You won ${bet * 2}.")#Поздравляем вы выйграли
-            else:
-                game_money -= bet
-                print(f"Sorry, you lost ${bet}.")#извини ты проиграл
+            except:
+                  ValueError
+                  print(f'incorrect number!! please enter number')
 
-            play_again = input("Do you want to play again? (yes/no): ")# Хотите сыгратб еще раз ?
-            if play_again.lower() != "yes":
-                break
 
-        if game_money > 1000:
-            print("Congratulations! You ended up in profit.")# Поздравляем вы оказались в плюсе
+        your_rate = int(input("enter your rate:"))
+        winning_number = numbers()
+        if lucky(selected_number,winning_number):
+            available_money += your_rate * 2
+            print(f" You win!!!!!{winning_number} it's winning number")
         else:
-            print("Better luck next time!")
+            available_money -= your_rate
+            print(f" You lost!!!!! {winning_number} it's winning number")
 
-    if __name__ == "__main__":
-        game_play()
+        new_game = input("Do you wanna play again? (yes or no): ")
+        if  new_game.lower() != 'yes':
+            break
+    print(f"THE EHD. Your check: { available_money}$")
+
+play_game()

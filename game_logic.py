@@ -1,6 +1,5 @@
 import random
-def number():
-    return random.randint(1-30)
-
-def numberswining(select_numders,win_number):
-    return select_numders == win_number
+def numbers():
+    return random.randint(1, 30)
+def lucky(selected_number, winning_number):
+    return selected_number == winning_number
